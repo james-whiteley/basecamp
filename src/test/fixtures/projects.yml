@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  to_be_completed: 2020-01-24 20:07:59
+  completed: 2020-01-24 20:07:59
+
+two:
+  title: MyString
+  author: MyString
+  to_be_completed: 2020-01-24 20:07:59
+  completed: 2020-01-24 20:07:59

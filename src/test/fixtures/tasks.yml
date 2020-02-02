@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  project: one
+  author: MyString
+  to_be_completed: 2020-01-24 20:09:08
+  completed: 2020-01-24 20:09:08
+
+two:
+  title: MyString
+  project: two
+  author: MyString
+  to_be_completed: 2020-01-24 20:09:08
+  completed: 2020-01-24 20:09:08

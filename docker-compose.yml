@@ -1,0 +1,54 @@
+version: '3'
+services:
+  rails:
+    build: .
+    ports:
+      - "8081:3000"
+    expose:
+      - "3000"
+    entrypoint: /bin/bash ./start.sh
+    #entrypoint: /bin/bash -c "cd /usr/src/app && bundle config set deployment 'true' && bundle && rails db:migrate RAILS_ENV=development && rails server -b 0.0.0.0"
+    #entrypoint: /bin/bash -c "tail -f /dev/null"
+    volumes:
+      - ./src:/usr/src/app
+      - ./start.sh:/start.sh
+  #api:
+  #  image: "node:8.9.4"
+  #  ports:
+  #    - "3000:3000"
+  #    - "9229:9229"
+  #  expose:
+  #    - "8080"
+  #    - "9229"
+  #  volumes:
+  #    - ./src:/usr/src/api
+  #  entrypoint: /bin/bash ./usr/src/api/start.sh       # Start servers MongoDB setup
+    #entrypoint: /bin/bash ./usr/src/api/start.sh 3306  # Start servers MySQL setup
+    #entrypoint: /bin/bash ./usr/src/api/start.sh 5432   # Start servers PostgreSQL setup
+
+  ################################################################
+  ######################### MYSQL CONFIG #########################
+  ################################################################
+  database:
+    image: mysql
+    ports:
+      - "3306:3306"
+    #volumes:
+    #  - ./basecamp.sql:/docker-entrypoint-initdb.d/basecamp.sql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+
+  ################################################################
+  ###################### POSTGRESQL CONFIG #######################
+  ################################################################
+  #database:
+  #  image: "postgres:latest"
+  #  ports:
+  #    - "5432:5432"
+  #  environment:
+  #    - DEBUG=true
+  #    - POSTGRES_USER=todo
+  #    - POSTGRES_PASSWORD=example
+  #  volumes:
+  #    - ./src/database/postgresql/schemas/todo.sql:/docker-entrypoint-initdb.d/todo.sql
